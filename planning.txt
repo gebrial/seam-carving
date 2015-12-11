@@ -1,0 +1,45 @@
+Objective: find and delete shortest energy path of pixels.
+
+Use Dijkstra's algorithm:
+
+1.
+Start with graph of nodes.
+Each node contains:
+	pointers to next nodes in path: left, right, and down
+	pointers to prev node in optimal path.
+	x, y values
+	value of node
+	distance value, i.e., sum of values of nodes in optimal path up to this node
+
+3.
+Have list of unvisited nodes, Q. Initially all nodes are unvisited.
+Sort list by smallest distance. Set distance of all nodes to infinity.
+Change distance of source nodes to energy value.
+
+4.
+get, and remove, first node from Q. 
+for all its neighbours/children:
+	if this dist + its val < its dist then
+		change its dist to this dist + its val
+		set its prev pointer to this
+
+5.
+if last removed node is bottom node then finished.
+otherwise go to step 4.
+
+////////////////////////////////////////////////////////////////////////////////////
+Step 1: Creating graph of nodes.
+
+strategy:
+start with bottom left and initialize graph outward.
+
+define w as width of graph, h as height of graph.
+0 based indexing. graph goes from 0 to w-1 and 0 to h-1
+
+
+a.
+start with node at loc (0, h-1)
+create the node, load information.
+save pointer to it
+
+b.
